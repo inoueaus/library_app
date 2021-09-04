@@ -1,0 +1,3 @@
+RewriteEngine on
+
+RewriteRule ^(index|book|home|search)$ $1.php [NC,L]

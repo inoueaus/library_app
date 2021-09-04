@@ -1,0 +1,139 @@
+CREATE TABLE authors (
+author_id SERIAL PRIMARY KEY,
+	last_name VARCHAR(100) NOT NULL,
+	first_name VARCHAR(100) NOT NULL,
+	dob DATE
+);
+
+CREATE TABLE books (
+book_id SERIAL PRIMARY KEY,
+	title VARCHAR(200) NOT NULL,
+	keywords VARCHAR(200),
+	genre VARCHAR(200),
+	author_id INT,
+	date_published DATE,
+	CONSTRAINT fk_author FOREIGN KEY(author_id)
+		REFERENCES authors(author_id)
+);
+
+CREATE TABLE users (
+user_id SERIAL PRIMARY KEY,
+	last_name VARCHAR(200) NOT NULL,
+	first_name VARCHAR(200) NOT NULL,
+	phone_number VARCHAR(100) NOT NULL UNIQUE,
+	username VARCHAR(200) NOT NULL UNIQUE
+	
+);
+
+CREATE TABLE reservations (
+reserve_id SERIAL PRIMARY KEY,
+	reserved_at TIMESTAMP NOT NULL DEFAULT NOW(),
+	due_date DATE NOT NULL DEFAULT NOW() + INTERVAL '7' DAY,
+	book_id INT NOT NULL,
+	CONSTRAINT fk_book_id FOREIGN KEY(book_id)
+	REFERENCES books(book_id)
+);
+
+CREATE TABLE descriptions (
+	description_id SERIAL PRIMARY KEY,
+	text TEXT,
+	book_id INT NOT NULL,
+	CONSTRAINT fk_book_id FOREIGN KEY(book_id)
+	REFERENCES books(book_id)
+);
+
+#inserting values
+WITH rows AS (INSERT INTO authors(last_name,first_name)
+VALUES('田中','芳樹')
+RETURNING author_id)
+
+
+INSERT INTO books(title,genre,keywords,date_published,author_id)
+SELECT '銀河英雄伝説１　黎明篇','SF','銀河 SF ラインハル 帝国 宇宙叙事詩','12-20-2013',author_id
+FROM rows;
+
+WITH rows AS (INSERT INTO authors(last_name,first_name)
+VALUES('司馬','遼太郎')
+RETURNING author_id)
+
+
+INSERT INTO books(title,
+				  genre,
+				  keywords,
+				  date_published,
+				  author_id)
+SELECT '竜馬がゆく',
+'時代',
+'坂本竜馬',
+'09-20-1998',
+author_id
+FROM rows;
+
+WITH rows AS (INSERT INTO authors(last_name,first_name)
+VALUES('池井','戸潤')
+RETURNING author_id)
+
+
+INSERT INTO books(title,
+				  genre,
+				  keywords,
+				  date_published,
+				  author_id)
+SELECT '下町ロケットシリーズ',
+'ドラマ',
+'研究者 製品開発',
+'12-20-2013',
+author_id
+FROM rows;
+
+WITH rows AS (INSERT INTO authors(last_name,first_name)
+VALUES('山崎','豊子')
+RETURNING author_id)
+
+
+INSERT INTO books(title,
+				  genre,
+				  keywords,
+				  date_published,
+				  author_id)
+SELECT '沈まぬ太陽（一）　－アフリカ篇・上－',
+'小説',
+'アフリカ サバンナ 流刑',
+'11-20-2001',
+author_id
+FROM rows;
+
+WITH rows AS (INSERT INTO authors(last_name,first_name)
+VALUES('村上','春樹')
+RETURNING author_id)
+
+
+INSERT INTO books(title,
+				  genre,
+				  keywords,
+				  date_published,
+				  author_id)
+SELECT 'ダンス･ダンス･ダンス',
+'小説',
+'資本主義 高度発展 社会批判 冒険',
+'11-20-2001',
+author_id
+FROM rows;
+
+INSERT INTO descriptions(text,book_id) VALUES('常勝の天才”ラインハルトと、“不敗の魔術師”ヤン・ウェンリー。ふたりの名将が現れたとき、帝国と同盟の抗争は新たな段階を迎えた。圧倒的なスケールを誇る宇宙叙事詩、スペースオペラの金字塔。',2);
+男たちの矜恃が激突する感動のエンターテインメント長編！
+第１４５回直木賞受賞作。',
+	4
+);
+INSERT INTO descriptions(text,book_id) VALUES(
+	'広大なアフリカのサバンナで、巨象に狙いをさだめ、猟銃を構える一人の男がいた。恩地元、日本を代表する企業・国民航空社員。エリートとして将来を嘱望されながら、中近東からアフリカへと、内規を無視した「流刑」に耐える日々は十年に及ぼうとしていた。人命をあずかる企業の非情、その不条理に不屈の闘いを挑んだ男の運命――。人間の真実を問う壮大なドラマが、いま幕を開ける！',
+	5
+);
+INSERT INTO descriptions(text,book_id) VALUES(
+	'『羊をめぐる冒険』から4年、激しく雪の降りしきる札幌の街から「僕」の新しい冒険が始まる。奇妙で複雑なダンス・ステップを踏みながら「僕」はその暗く危険な運命の迷路をすり抜けていく。70年代の魂の遍歴を辿った著者が80年代を舞台に、新たな価値を求めて闇と光の交錯を鮮やかに描きあげた話題作。',
+	6
+);
+
+SELECT title,last_name FROM books
+INNER JOIN authors
+ON books.author_id = authors.author_id;
