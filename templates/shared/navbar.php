@@ -8,8 +8,16 @@
         </li>
       </ul>
       <form action="search" method="post" class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <?php 
+        if (isset($_POST["params"])) {
+          $placeholder = $_POST["params"] ?: "Search";
+        } else {
+          $placeholder = "検索";
+        }
+        
+        ?>
+        <input class="form-control me-2" type="search" name="params" placeholder="<?php echo $placeholder; ?>">
+        <button class="btn btn-outline-success" type="submit" name="submit" value="title">Search</button>
       </form>
   </div>
 </nav>
