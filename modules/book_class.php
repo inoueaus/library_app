@@ -12,6 +12,7 @@ class Book
     public $last_name;
     public $first_name;
     public $text;
+    public $short_text;
     public $author_id;
 
     function __construct($id=null,$title=null,$keywords=null,$genre=null,$date_published=null,$last_name=null,$first_name=null,$text=null)
@@ -44,6 +45,7 @@ class Book
         $this->first_name = $row["first_name"];
         $this->text = $row["text"];
         $this->author_id = $row["author_id"];
+        $this->short_text = mb_substr($this->text,0,25) . " ...";
     }
 
     public function save()
