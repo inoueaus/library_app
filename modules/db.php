@@ -9,6 +9,7 @@ $password = getenv("PASSWORD");
 
 $connection = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password sslmode=require options='--client_encoding=UTF8'");
 
+phpinfo();
 
 ?>
 
