@@ -2,6 +2,43 @@
 
 include "book_class.php";
 
+function page_nav($current_page=1)
+{
+    global $connection;
+    $query = "SELECT COUNT(*) FROM books;";
+    $result = pg_query($connection,$query);
+    $row = pg_fetch_assoc($result);
+    $total_books = $row["count"];
+    $total_pages = ceil($total_books/5);
+    $page_nav = "<nav><ul class='pagination'>";
+    //do not add previous button for page 1
+    if ($current_page == 1) {
+        $page_nav .= "<li class='page-item disabled'><a class='page-link' href='index?page=#'>前</a></li>";
+    } else {
+        $previous = $current_page - 1;
+        $page_nav .= "<li class='page-item'><a class='page-link' href='index?page=$previous'>前</a></li>";
+    }
+    for ($index=1; $index <= $total_pages; $index++) { 
+        if ($index == $current_page) {
+            $page_nav .= "<li class='page-item active'><a class='page-link' href='index?page=$index'>$index</a></li>";
+        } else {
+            $page_nav .= "<li class='page-item'><a class='page-link' href='index?page=$index'>$index</a></li>";
+        }
+        
+    }
+    if ($current_page == $total_pages) {
+        //do not add next button for last page
+        $page_nav .= "<li class='page-item disabled'><a class='page-link' href='index?page=#'>次</a></li>";
+        
+    } else {
+        $next = $current_page + 1;
+        $page_nav .= "<li class='page-item'><a class='page-link' href='index?page=$next'>次</a></li>";
+    }
+    $page_nav .= "</ul></nav>";
+    
+    echo $page_nav;
+}
+
 function search_books_by_title($params)
 {
     global $connection;
@@ -11,10 +48,11 @@ function search_books_by_title($params)
     books_to_list($books_arr);
 }
 
-function random_list()
+function books_list($page=1)
 {
     global $connection;
-    $query = "SELECT books.book_id FROM books ORDER BY random() LIMIT 5;";
+    $ofst = ($page - 1) * 5;
+    $query = "SELECT books.book_id FROM books ORDER BY book_id LIMIT 5 OFFSET $ofst;";
     $result = pg_query($connection,$query);
     $books_arr = result_to_books_array($result);
     books_to_list($books_arr);

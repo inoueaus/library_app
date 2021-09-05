@@ -13,7 +13,7 @@ if (isset($_GET["book_id"])) {
     $book = new Book($_GET["book_id"]);
     display_one($book,true);
 } else {
-    random_list();
+    books_list();
 }
 
 ?>
