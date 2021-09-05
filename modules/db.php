@@ -7,9 +7,13 @@ $user = getenv("DB_USER");
 $port = getenv("DB_PORT");
 $password = getenv("PASSWORD");
 
-echo "host=$host port=$port dbname=$dbname user=$user password=$password";
-
 $connection = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
+
+if ($connection) {
+    echo "connected to db";
+} else {
+    echo "connection failed";
+}
 
 ?>
 
