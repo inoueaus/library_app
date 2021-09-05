@@ -23,6 +23,7 @@ if (isset($_GET["page"])) {
 
 
 <div class="container mb-5">
+    <div class="">
     <?php
     //check if not on 1st page
     if (isset($_GET["page"])) {
@@ -34,6 +35,7 @@ if (isset($_GET["page"])) {
     }
     
     ?>
+    </div>
 </div>
 
 

@@ -10,7 +10,7 @@ function page_nav($current_page=1)
     $row = pg_fetch_assoc($result);
     $total_books = $row["count"];
     $total_pages = ceil($total_books/5);
-    $page_nav = "<nav><ul class='pagination'>";
+    $page_nav = "<nav><ul class='pagination text-center'>";
     //do not add previous button for page 1
     if ($current_page == 1) {
         $page_nav .= "<li class='page-item disabled'><a class='page-link' href='index?page=#'>前</a></li>";
@@ -39,11 +39,13 @@ function page_nav($current_page=1)
     echo $page_nav;
 }
 
+
 function search_books_by_title($params)
 {
-    global $connection;
-    $query = "SELECT books.book_id FROM books WHERE title ILIKE '%$params%' LIMIT 5;";
+    global $connection,$total_pages;
+    $query = "SELECT books.book_id FROM books WHERE title ILIKE '%$params%' LIMIT 25;";
     $result = pg_query($connection,$query);
+    $total_pages = ceil(pg_num_rows($result)/5);
     $books_arr = result_to_books_array($result);
     books_to_list($books_arr);
 }
