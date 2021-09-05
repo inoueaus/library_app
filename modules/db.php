@@ -7,6 +7,8 @@ $user = getenv("USER");
 $port = getenv("PORT");
 $password = getenv("PASSWORD");
 
+echo "host=$host port=$port dbname=$dbname user=$user password=$password";
+
 $connection = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 
 ?>
