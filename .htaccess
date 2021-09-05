@@ -1,3 +1,5 @@
 RewriteEngine on
 
-RewriteRule ^(index|book|home|search|reserve|reserved)$ $1.php [NC,L]
+RewriteRule ^(index)$ $1.php [NC,L]
+
+RewriteRule ^(templates/search|templates/reserve|templates/reserved|templates/book)$ $1.php [NC,L]

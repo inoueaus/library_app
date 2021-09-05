@@ -38,6 +38,6 @@ if (isset($_GET["page"])) {
     </div>
 </div>
 
-
+<footer class="footer text-muted"><a href="https://booklive.jp/feature/index/id/novel100">引用</a></footer>
 
 <?php include "templates/shared/footer.php"; ?>

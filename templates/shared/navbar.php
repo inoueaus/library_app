@@ -7,7 +7,7 @@
           <a class="nav-link" href="#"></a>
         </li>
       </ul>
-      <form action="search" method="post" class="d-flex">
+      <form action="templates/search" method="post" class="d-flex">
         <?php 
         if (isset($_POST["params"])) {
           $placeholder = $_POST["params"] ?: "検索";
