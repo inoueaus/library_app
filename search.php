@@ -3,6 +3,14 @@ include "templates/shared/header.php";
 include "templates/shared/navbar.php";
 ?>
 
+
+<div class="container my-3">
+    <h1>検索結果</h1>
+</div>
+
+
+<div class="container">
+    <ul class="list-group">
 <?php
 
 if (isset($_POST["submit"])) {
@@ -14,6 +22,8 @@ if (isset($_POST["submit"])) {
 }
 
 ?>
+</ul>
+</div>
 
 
 

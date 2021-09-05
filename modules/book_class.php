@@ -31,6 +31,19 @@ class Book
         }
     }
 
+    public function can_borrow()
+    {
+        global $connection;
+        $query = "SELECT * FROM reservations WHERE book_id = $this->id";
+        $result = pg_query($connection,$query);
+        $length = pg_num_rows($result);
+        if ($length) {
+            return "<small>不可</small>";
+        } else {
+            return "<small>可</small><br><a href='reserve?book_id=$this->id&title=$this->title' class='btn btn-primary'>予約</a>";
+        }
+    }
+
     protected function load($id)
     {   
         global $connection;

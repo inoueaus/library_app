@@ -10,7 +10,7 @@
       <form action="search" method="post" class="d-flex">
         <?php 
         if (isset($_POST["params"])) {
-          $placeholder = $_POST["params"] ?: "Search";
+          $placeholder = $_POST["params"] ?: "検索";
         } else {
           $placeholder = "検索";
         }
