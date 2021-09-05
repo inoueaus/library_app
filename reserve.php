@@ -30,7 +30,7 @@ if (isset($_GET["error"])) {
 </div>
 
 <div class="container">
-    <form action="reserved.php" method="post">
+    <form action="reserved" method="post">
         <div class="form-group">
             <label for="last_name">姓</label>
             <input class="form-control mb-1" name="last_name" placeholder="田中" type="text">
