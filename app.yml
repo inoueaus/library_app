@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-runtime: php73
+runtime: php74
 
 handlers:
 - url: /
@@ -38,3 +38,13 @@ handlers:
 
 - url: /.*
   script: not_found.php
+
+env_variables:
+    # populate these to use the "mysql" or "postres" backends
+    CLOUD_SQL_HOST: "34.85.97.230"
+    CLOUD_SQL_USER: "postgres"
+    CLOUD_SQL_PASSWORD: "u2ze86qm"
+    DB_NAME: "library"
+
+# beta_settings:
+#   cloud_sql_instances: s
