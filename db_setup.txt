@@ -8,8 +8,6 @@ author_id SERIAL PRIMARY KEY,
 CREATE TABLE books (
 book_id SERIAL PRIMARY KEY,
 	title VARCHAR(200) NOT NULL,
-	keywords VARCHAR(200),
-	genre VARCHAR(200),
 	author_id INT,
 	date_published DATE,
 	CONSTRAINT fk_author FOREIGN KEY(author_id)
@@ -20,10 +18,8 @@ CREATE TABLE users (
 user_id SERIAL PRIMARY KEY,
 	last_name VARCHAR(200) NOT NULL,
 	first_name VARCHAR(200) NOT NULL,
-	phone_number VARCHAR(100) NOT NULL UNIQUE,
-	username VARCHAR(200) NOT NULL UNIQUE
-	
-);
+	phone_number VARCHAR(100) NOT NULL UNIQUE
+	);
 
 CREATE TABLE reservations (
 reserve_id SERIAL PRIMARY KEY,
