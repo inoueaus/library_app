@@ -3,8 +3,8 @@
 $url = parse_url(getenv('DATABASE_URL'));
 $host = getenv("HOST");
 $dbname = getenv("DBNAME");
-$user = getenv("USER");
-$port = getenv("PORT");
+$user = getenv("DB_USER");
+$port = getenv("DB_PORT");
 $password = getenv("PASSWORD");
 
 echo "host=$host port=$port dbname=$dbname user=$user password=$password";
