@@ -4,7 +4,7 @@ include "templates/shared/navbar.php";
 
 ?>
 
-<div class="container">
+<div class="container py-3">
 <ul class="list-group">
 <?php
 
@@ -18,10 +18,6 @@ if (isset($_GET["book_id"])) {
 
 ?>
 </ul>
-
-
-
-<?php include "templates/list_display.php"; ?>
 
 
 

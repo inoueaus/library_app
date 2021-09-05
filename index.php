@@ -5,7 +5,7 @@ include "templates/shared/navbar.php";
 
 
 
-<div class="container mb-3">
+<div class="container my-3">
 <ul class="list-group">
 <?php
 //set book to display here
