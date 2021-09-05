@@ -26,11 +26,8 @@ reserve_id SERIAL PRIMARY KEY,
 	reserved_at TIMESTAMP NOT NULL DEFAULT NOW(),
 	due_date DATE NOT NULL DEFAULT NOW() + INTERVAL '7' DAY,
 	book_id INT NOT NULL,
-	user_id INT,
 	CONSTRAINT fk_book_id FOREIGN KEY(book_id)
 	REFERENCES books(book_id)
-	CONSTRAINT fk_user_id FOREIGN KEY(user_id) 
-	REFERENCES users(user_id)
 );
 
 CREATE TABLE descriptions (
