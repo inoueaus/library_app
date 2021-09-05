@@ -98,7 +98,7 @@ function reserve_book($book_id,$last_name,$first_name,$phone_number)
         if ($count) {
             $row = pg_fetch_assoc($result);
             $user_id = $row["user_id"];
-            $query = "INSERT INTO reservations(book_id,user_id) VALUES($book_id,$user_id)";
+            $query = "INSERT INTO reservations(book_id,user_id) VALUES($book_id,$user_id) RETURNING due_date";
             $result = pg_query($connection,$query);
             if ($result) {
                 $row = pg_fetch_assoc($result);
