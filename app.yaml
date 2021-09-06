@@ -41,10 +41,10 @@ handlers:
 
 env_variables:
     # populate these to use the "mysql" or "postres" backends
-    CLOUD_SQL_HOST: "34.85.97.230"
+    # CLOUD_SQL_HOST: "34.85.97.230"
     CLOUD_SQL_USER: "postgres"
     CLOUD_SQL_PASSWORD: "u2ze86qm"
     DB_NAME: "library"
 
-# beta_settings:
-#   cloud_sql_instances: s
+beta_settings:
+  cloud_sql_instances: library-example-325121:asia-northeast1:library-psql
