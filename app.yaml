@@ -12,8 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-runtime: php74
+runtime: php
 env: flex
+
+runtime_config:
+    php_version: 74
 
 handlers:
 - url: /
