@@ -19,7 +19,7 @@ env: flex
 # something like https://cloud.google.com/secret-manager/ to help keep secrets
 # secret.
 env_variables:
-  CLOUD_SQL_CONNECTION_NAME: "library-example-325121:asia-northeast1:library-psql"
+  CLOUD_SQL_CONNECTION_NAME: "/cloudsql/library-example-325121:asia-northeast1:library-psql"
   DB_USER: "postgres"
   DB_PASS: "u2ze86qm"
   DB_NAME: "library"
