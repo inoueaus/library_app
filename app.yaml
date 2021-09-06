@@ -16,7 +16,7 @@ runtime: php
 env: flex
 
 runtime_config:
-    php_version: 74
+    document_root: .
 
 handlers:
 - url: /
