@@ -1,6 +1,9 @@
 <?php 
 include "templates/shared/header.php"; 
 include "templates/shared/navbar.php";
+
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 ?>
 
 
