@@ -41,7 +41,9 @@ handlers:
 
 env_variables:
     # populate these to use the "mysql" or "postres" backends
-    # CLOUD_SQL_HOST: "34.85.97.230"
+    CLOUD_SQL_DSN: "pgsql:unix_socket=/cloudsql/library-example-325121;dbname=library"
+    CLOUD_SQL_CONNECTION_NAME: "library-example-325121:asia-northeast1:library-psql"
+    CLOUD_SQL_INSTANCE_NAME: "/cloudsql/library-example-325121"
     CLOUD_SQL_USER: "postgres"
     CLOUD_SQL_PASSWORD: "u2ze86qm"
     DB_NAME: "library"
