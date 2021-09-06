@@ -46,7 +46,9 @@ env_variables:
     CLOUD_SQL_INSTANCE_NAME: "/cloudsql/library-example-325121"
     CLOUD_SQL_USER: "postgres"
     CLOUD_SQL_PASSWORD: "u2ze86qm"
+    CLOUD_SQL_PORT: "5432"
+    CLOUD_SQL_TCP: "172.17.0.1"
     DB_NAME: "library"
 
 beta_settings:
-  cloud_sql_instances: library-example-325121:asia-northeast1:library-psql
+  cloud_sql_instances: library-example-325121:asia-northeast1:library-psql=tcp:5432
