@@ -1,3 +1,0 @@
-RewriteEngine on
-
-RewriteRule ^(index|book|home|search|reserve|reserved)$ $1.php [NC,L]
