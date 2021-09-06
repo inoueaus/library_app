@@ -55,4 +55,4 @@ env_variables:
     DB_NAME: "library"
 
 beta_settings:
-  cloud_sql_instances: library-example-325121:asia-northeast1:library-psql=tcp:5432
+  cloud_sql_instances: library-example-325121:asia-northeast1:library-psql
