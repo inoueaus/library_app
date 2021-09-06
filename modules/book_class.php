@@ -36,7 +36,7 @@ class Book
         if ($length) {
             return "<small>不可</small>";
         } else {
-            return "<small>可</small><br><a href='reserve?book_id=$this->id&title=$this->title' class='btn btn-primary'>予約</a>";
+            return "<small>可</small><br><a href='reserve.php?book_id=$this->id&title=$this->title' class='btn btn-primary'>予約</a>";
         }
     }
 
