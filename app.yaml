@@ -47,21 +47,24 @@ handlers:
 - url: /index
   script: index.php
 
-- url: /book
-  script: book.php
-
-- url: /reserve
-  script: reserve.php
-
-- url: /reserved
-  script: reserved.php
-
-- url: /search
-  script: search.php
-
-- url: /admin
-  script: admin.php
-
 - url: /.*
-  script: not_found.php
+  script: auto
+
+# - url: /book
+#   script: book.php
+
+# - url: /reserve
+#   script: reserve.php
+
+# - url: /reserved
+#   script: reserved.php
+
+# - url: /search
+#   script: search.php
+
+# - url: /admin
+#   script: admin.php
+
+# - url: /.*
+#   script: not_found.php
 
