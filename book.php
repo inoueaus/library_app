@@ -1,6 +1,6 @@
 <?php 
-include "shared/header.php"; 
-include "shared/navbar.php";
+include "templates/shared/header.php"; 
+include "templates/shared/navbar.php";
 
 ?>
 
@@ -21,4 +21,4 @@ if (isset($_GET["book_id"])) {
 
 
 
-<?php include "shared/footer.php"; ?>
+<?php include "templates/shared/footer.php"; ?>
