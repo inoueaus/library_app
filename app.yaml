@@ -1,10 +1,10 @@
-# Copyright 2021 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,8 +15,30 @@
 runtime: php
 env: flex
 
+# Remember - storing secrets in plaintext is potentially unsafe. Consider using
+# something like https://cloud.google.com/secret-manager/ to help keep secrets
+# secret.
+env_variables:
+  CLOUD_SQL_CONNECTION_NAME: "library-example-325121:asia-northeast1:library-psql"
+  DB_USER: "postgres"
+  DB_PASS: "u2ze86qm"
+  DB_NAME: "library"
+
+  # TCP domain socket setup; uncomment if using a TCP domain socket
+  # DB_HOST: 172.17.0.1
+
+# Choose to enable either a TCP or Unix domain socket for your database
+# connection:
+# Enable a Unix domain socket:
+beta_settings:
+  cloud_sql_instances: "library-example-325121:asia-northeast1:library-psql"
+
+# Enable a TCP domain socket:
+# beta_settings:
+#   cloud_sql_instances: <MY-PROJECT>:<INSTANCE-REGION>:<INSTANCE-NAME>=tcp:5432
+
 runtime_config:
-    document_root: .
+  document_root: .
 
 handlers:
 - url: /
@@ -43,16 +65,3 @@ handlers:
 - url: /.*
   script: not_found.php
 
-env_variables:
-    # populate these to use the "mysql" or "postres" backends
-    CLOUD_SQL_DSN: "pgsql:unix_socket=/cloudsql/library-example-325121;dbname=library"
-    CLOUD_SQL_CONNECTION_NAME: "library-example-325121:asia-northeast1:library-psql"
-    CLOUD_SQL_INSTANCE_NAME: "/cloudsql/library-example-325121"
-    CLOUD_SQL_USER: "postgres"
-    CLOUD_SQL_PASSWORD: "u2ze86qm"
-    CLOUD_SQL_PORT: "5432"
-    CLOUD_SQL_TCP: "172.17.0.1"
-    DB_NAME: "library"
-
-beta_settings:
-  cloud_sql_instances: library-example-325121:asia-northeast1:library-psql
